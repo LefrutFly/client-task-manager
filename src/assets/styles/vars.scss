@@ -1,0 +1,57 @@
+$colorBackground0: #f7f7ff;
+$colorBackground1: #f9f1ef;
+$colorBackground2: #ffffff;
+$colorPrimaryBlue: #535f93;
+$colorAccent1: #e8e8e8;
+$colorAccent2: #1d285e;
+$colorAccent3: #1f2027;
+$colorTextBase: #000000;
+$colorTextWhite: #fffbee;
+$colorTextGray: #a1a5a8;
+$colorShadowGray: #6e7479;
+$colorRedUI: #ed6a5a;
+$colorGreenUI: #9bc1bc;
+$colorWhiteUI: #ffffff;
+
+@mixin textH1 {
+	font-weight: 700;
+	font-size: 62px;
+}
+@mixin textH2 {
+	font-weight: 600;
+	font-size: 54px;
+}
+@mixin textH3 {
+	font-weight: 500;
+	font-size: 40px;
+}
+@mixin textH4 {
+	font-weight: 300;
+	font-size: 30px;
+}
+@mixin textH5 {
+	font-weight: 300;
+	font-size: 24px;
+}
+@mixin textH6 {
+	font-weight: 300;
+	font-size: 18px;
+}
+@mixin grayShadow {
+	box-shadow: 0px 2px 10px rgba($color: $colorShadowGray, $alpha: 0.8);
+}
+@mixin grayShadowHover {
+	box-shadow: 0px 2px 15px rgba($color: $colorShadowGray, $alpha: 0.8);
+}
+@mixin greenShadow {
+	box-shadow: 0px 2px 10px rgba($color: $colorGreenUI, $alpha: 0.8);
+}
+@mixin greenShadowHover {
+	box-shadow: 0px 2px 15px rgba($color: $colorGreenUI, $alpha: 0.8);
+}
+@mixin redShadow {
+	box-shadow: 0px 2px 10px rgba($color: $colorRedUI, $alpha: 0.8);
+}
+@mixin redShadowHover {
+	box-shadow: 0px 2px 15px rgba($color: $colorRedUI, $alpha: 0.8);
+}

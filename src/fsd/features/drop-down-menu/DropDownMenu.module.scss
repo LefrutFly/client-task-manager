@@ -1,0 +1,34 @@
+@import '../../../assets/styles/vars.scss';
+
+.body {
+	background-color: $colorBackground1;
+	@include grayShadow;
+	@include textH6;
+	padding-top: 0.4em;
+	padding-bottom: 0.5em;
+	margin-inline: auto;
+	color: $colorTextGray;
+	cursor: pointer;
+	width: 300px;
+	padding-inline: 15px;
+	border-radius: 0px 0px 10px 10px;
+
+	.item {
+		text-align: center;
+		margin-top: 0.4em;
+
+		cursor: pointer;
+
+		&:hover {
+			color: $colorTextBase;
+		}
+	}
+	.arrowUp {
+		margin-top: 1em;
+	}
+
+	.demarcationLine {
+		border-top: 1px solid $colorTextGray;
+		padding-top: 0.5em;
+	}
+}

@@ -1,0 +1,33 @@
+@import '../../../../assets/styles/vars.scss';
+
+.body {
+	display: block;
+	border-radius: 15px;
+	padding: 0.3em 1em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-inline: auto;
+	color: $colorTextWhite;
+
+	&:hover {
+		transform: scale(1.02);
+		transition: 0.1s;
+		color: $colorWhiteUI;
+	}
+}
+.green {
+	background-color: $colorGreenUI;
+	@include greenShadow;
+
+	&:hover {
+		@include greenShadowHover;
+	}
+}
+.red {
+	background-color: $colorRedUI;
+	@include redShadow;
+
+	&:hover {
+		@include redShadowHover;
+	}
+}

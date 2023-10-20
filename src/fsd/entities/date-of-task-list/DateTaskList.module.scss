@@ -1,0 +1,22 @@
+@import '../../../assets/styles/vars.scss';
+
+.body {
+	color: $colorPrimaryBlue;
+	animation: flashingGlow linear 3s infinite;
+
+	span {
+		color: $colorRedUI;
+	}
+}
+
+@keyframes flashingGlow {
+	0% {
+		filter: drop-shadow(0px 0px 3px rgba($colorPrimaryBlue, 0.1));
+	}
+	50% {
+		filter: drop-shadow(0px 0px 3px rgba($colorPrimaryBlue, 0.8));
+	}
+	100% {
+		filter: drop-shadow(0px 0px 3px rgba($colorPrimaryBlue, 0.1));
+	}
+}

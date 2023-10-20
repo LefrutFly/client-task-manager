@@ -1,0 +1,31 @@
+@import './vars.scss';
+
+body {
+	background-color: $colorBackground0;
+	color: $colorTextBase;
+	font-family: 'Montserrat';
+}
+
+h1 {
+	@include textH1;
+}
+
+h2 {
+	@include textH2;
+}
+
+h3 {
+	@include textH3;
+}
+
+h4 {
+	@include textH4;
+}
+
+h5 {
+	@include textH5;
+}
+
+h6 {
+	@include textH6;
+}

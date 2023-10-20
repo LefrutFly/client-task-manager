@@ -1,0 +1,50 @@
+@import '../../../../assets/styles/vars.scss';
+
+.body {
+	display: flex;
+	flex-direction: column;
+
+	width: 90%;
+	max-width: 600px;
+	min-height: 200px;
+	padding-bottom: 2em;
+
+	background-color: $colorBackground1;
+	@include grayShadow;
+	border-radius: 15px;
+	margin-inline: auto;
+
+	margin-top: 5em;
+
+	.header {
+		display: block;
+		width: 100%;
+		background-color: $colorPrimaryBlue;
+		@include textH3;
+		padding-top: 0.2em;
+		padding-bottom: 0.3em;
+		text-align: center;
+		color: $colorTextWhite;
+		border-radius: 15px 15px 0px 0px;
+		@include grayShadow;
+		p {
+			animation: flashingGlow linear 3s infinite;
+		}
+	}
+
+	.children {
+		margin-top: 2em;
+	}
+}
+
+@keyframes flashingGlow {
+	0% {
+		filter: drop-shadow(0px 0px 3px rgba($colorTextWhite, 0.1));
+	}
+	50% {
+		filter: drop-shadow(0px 0px 3px rgba($colorTextWhite, 0.8));
+	}
+	100% {
+		filter: drop-shadow(0px 0px 3px rgba($colorTextWhite, 0.1));
+	}
+}

@@ -1,0 +1,34 @@
+@import '../../../assets/styles/vars.scss';
+
+.body {
+	@include textH5;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1em;
+
+	.label {
+		margin-inline: auto;
+		.placeholder {
+			@include textH6;
+			display: block;
+			margin-bottom: 3px;
+			color: $colorTextGray;
+			.placeholderIcon {
+			}
+		}
+		.input {
+			@include textH5;
+			color: $colorTextBase;
+			padding: 0.3em 1em;
+			border-radius: 10px;
+			border: 1px solid $colorAccent1;
+			background-color: $colorWhiteUI;
+		}
+	}
+
+	.error {
+		@include textH6;
+		color: $colorRedUI;
+		margin-inline: auto;
+	}
+}

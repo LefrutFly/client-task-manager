@@ -1,0 +1,15 @@
+@import '../../../assets/styles/vars.scss';
+
+.emailInput {
+}
+
+.passwordInput {
+}
+.buttonsBlock {
+	display: flex;
+	flex-direction: column;
+	.goToLoginOrRegister {
+		margin-top: 1em;
+		background-color: $colorBackground1;
+	}
+}

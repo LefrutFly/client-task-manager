@@ -1,0 +1,50 @@
+@import '../../../assets/styles/vars.scss';
+.body {
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-inline: 5vw;
+		@include textH4;
+		min-height: 2em;
+		background-color: $colorPrimaryBlue;
+		@include grayShadow;
+		color: $colorTextWhite;
+
+		.titleContainer {
+			height: 1em;
+			animation: flashingGlow linear 3s infinite;
+
+			.prefix {
+				margin-right: 10px;
+			}
+
+			.userName {
+				cursor: pointer;
+			}
+		}
+		.userButton {
+			display: inline-block;
+			margin-left: 0.3em;
+			margin-top: 0.2em;
+
+			height: 0.8em;
+			width: 0.8em;
+			cursor: pointer;
+
+			animation: flashingGlow linear 3s infinite;
+		}
+	}
+}
+
+@keyframes flashingGlow {
+	0% {
+		filter: drop-shadow(0px 0px 3px rgba($colorTextWhite, 0.1));
+	}
+	50% {
+		filter: drop-shadow(0px 0px 3px rgba($colorTextWhite, 0.8));
+	}
+	100% {
+		filter: drop-shadow(0px 0px 3px rgba($colorTextWhite, 0.1));
+	}
+}
