@@ -6,6 +6,7 @@ import {
 import { auth } from '../../config/firebase/firebase'
 import { IUserAuth } from '../../types/user.interface'
 import { ProfileService } from '../profile/Profile.service'
+import { TasksService } from '../tasks/Task.service'
 
 export const UserService = {
 	async register(
@@ -18,6 +19,7 @@ export const UserService = {
 		await createUserWithEmailAndPassword(auth, email, password)
 			.then(({ user }) => {
 				ProfileService.create(email)
+				TasksService.createEmptyTask(user.uid)
 				successCallback && successCallback(user)
 			})
 			.catch(error => {

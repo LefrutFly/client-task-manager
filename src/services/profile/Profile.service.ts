@@ -10,7 +10,7 @@ const profileUrl = 'profiles/'
 export const ProfileService = {
 	async getByEmail(email: string) {
 		const key = formattingForDB(email)
-		const rtdbRef = ref(rtdb, 'profiles/' + key)
+		const rtdbRef = ref(rtdb, profileUrl + key)
 		try {
 			const snapshot = await get(rtdbRef)
 

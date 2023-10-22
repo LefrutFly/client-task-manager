@@ -6,7 +6,7 @@ export enum TypeOfTask {
 
 export interface ITaskDB {
 	id: number
-	userId: number
+	userId: string
 	title: string
 	description: string
 	isCompleted: boolean

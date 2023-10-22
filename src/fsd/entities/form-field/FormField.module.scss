@@ -8,21 +8,41 @@
 
 	.label {
 		margin-inline: auto;
-		.placeholder {
+		.title {
 			@include textH6;
 			display: block;
 			margin-bottom: 3px;
 			color: $colorTextGray;
-			.placeholderIcon {
+			opacity: 0;
+			transition: opacity 0.4s;
+
+			.titleIcon {
 			}
 		}
+
+		.titleVisible {
+			opacity: 1;
+		}
+
 		.input {
 			@include textH5;
 			color: $colorTextBase;
 			padding: 0.3em 1em;
 			border-radius: 10px;
-			border: 1px solid $colorAccent1;
+			border: 2px solid $colorAccent1;
 			background-color: $colorWhiteUI;
+
+			&:focus {
+				border: 2px solid $colorPrimaryBlue;
+			}
+
+			&::placeholder {
+				opacity: 1;
+			}
+
+			&:focus::placeholder {
+				opacity: 0;
+			}
 		}
 	}
 

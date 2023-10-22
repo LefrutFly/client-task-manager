@@ -2,17 +2,18 @@ import { FC } from 'react'
 import style from './DateTaskList.module.scss'
 
 interface IDateTaskListProps {
-	date: Date
+	date: string
 }
 
 const DateTaskList: FC<IDateTaskListProps> = ({ date }) => {
+	const d = date.split('.')
 	return (
 		<div className={style.body}>
-			{date.getDate().toString().padStart(2, '0')}
+			{d[0]}
 			<span>.</span>
-			{(date.getMonth() + 1).toString().padStart(2, '0')}
+			{d[1]}
 			<span>.</span>
-			{date.getFullYear()}
+			{d[2]}
 		</div>
 	)
 }

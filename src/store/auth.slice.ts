@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { LocalStorageService } from '../services/localStorage/LocalStorageService.service'
 
 export interface IUserState {
 	email: string | null
@@ -12,25 +13,16 @@ const initialState: IUserState = {
 	id: null,
 }
 
-export const saveUserToLocalStorage = (user: IUserState) => {
-	localStorage.setItem('user', JSON.stringify(user))
-}
-
-export const loadUserFromLocalStorage = () => {
-	const storedUser = localStorage.getItem('user')
-	return storedUser ? JSON.parse(storedUser) : null
-}
-
 const userSlice = createSlice({
 	name: 'user',
-	initialState: loadUserFromLocalStorage() || initialState,
+	initialState: LocalStorageService.loadUser() || initialState,
 	reducers: {
 		setUser(state, action) {
 			state.email = action.payload.email
 			state.token = action.payload.token
 			state.id = action.payload.id
 
-			saveUserToLocalStorage(action.payload)
+			LocalStorageService.saveUser(action.payload)
 		},
 		clearUser(state) {
 			state.email = null

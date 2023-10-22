@@ -33,6 +33,11 @@ const ProfilePage = () => {
 		navigate(pathToHome)
 	}
 
+	const cancel = () => {
+		reset
+		navigate(pathToHome)
+	}
+
 	return (
 		<Table_1 headerTittle='Profile'>
 			<form onSubmit={handleSubmit(onSubmit)}>
@@ -48,11 +53,15 @@ const ProfilePage = () => {
 							message: 'Max length should less 12 symbols',
 						},
 					})}
-					placeholder='your nick name'
+					placeholder='your new nick name'
 					error={errors.userName?.message}
 				/>
 				<Button_1 variant='green'>Submit</Button_1>
 			</form>
+			<br />
+			<Button_1 variant='red' onClick={cancel}>
+				cancel
+			</Button_1>
 		</Table_1>
 	)
 }

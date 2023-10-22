@@ -1,19 +1,27 @@
-import { TypeOfTask } from '../../../types/task.interface'
-import DateTaskList from '../../entities/date-of-task-list/DateTaskList'
+import { FC } from 'react'
+import { ITaskDB } from '../../../types/task.interface'
 import TaskCard from '../../entities/task-card/TaskCard'
 import style from './TaskList.module.scss'
 
-const TaskList = () => {
+interface ITasksListProps {
+	tasks: ITaskDB[]
+}
+
+const TaskList: FC<ITasksListProps> = ({ tasks }) => {
 	return (
-		<div className={style.body}>
-			<DateTaskList date={new Date('2023-10-03')} />
-			<TaskCard
-				title='First Task'
-				description={`It's really my first task!`}
-				isCompleted={false}
-				type_of_task={TypeOfTask.GREEN}
-			/>
-		</div>
+		<section className={style.body}>
+			{tasks.length &&
+				tasks.map(task => (
+					<TaskCard
+						key={task.id}
+						title={task.title}
+						description={task.description}
+						isCompleted={task.isCompleted}
+						type_of_task={task.type_of_task}
+						date={task.date}
+					/>
+				))}
+		</section>
 	)
 }
 
