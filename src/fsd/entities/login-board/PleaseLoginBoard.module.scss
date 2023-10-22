@@ -1,0 +1,9 @@
+@import '../../../assets/styles/vars.scss';
+
+.message {
+	@include textH4;
+	text-align: center;
+	color: $colorPrimaryBlue;
+	text-decoration: underline;
+	cursor: pointer;
+}

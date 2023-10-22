@@ -10,6 +10,7 @@ interface ITasksListProps {
 const TaskList: FC<ITasksListProps> = ({ tasks }) => {
 	return (
 		<section className={style.body}>
+			<div>добавить</div>
 			{tasks.length &&
 				tasks.map(task => (
 					<TaskCard

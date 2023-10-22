@@ -1,0 +1,7 @@
+@import '../../../assets/styles/vars.scss';
+
+.message {
+	color: $colorRedUI;
+	@include textH3;
+	text-align: center;
+}
