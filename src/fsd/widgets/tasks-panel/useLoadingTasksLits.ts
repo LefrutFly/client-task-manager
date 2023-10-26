@@ -9,6 +9,8 @@ export const useLoadingTasksLits = () => {
 
 	const [tasks, setTasks] = useState<ITaskDB[]>([])
 
+	const [isEmpty, setEmpty] = useState<boolean>(true)
+
 	const loadTasks = async (callback: () => any) => {
 		try {
 			const length = await TasksService.getLength()
@@ -18,9 +20,10 @@ export const useLoadingTasksLits = () => {
 					element => element !== null && element !== undefined
 				)
 				setTasks(filteredArray)
+				setEmpty(false)
 				setIsLoading(false)
 			} else {
-				setIsError(true)
+				setEmpty(true)
 			}
 		} catch (error) {
 			setIsError(true)
@@ -30,5 +33,5 @@ export const useLoadingTasksLits = () => {
 		callback()
 	}
 
-	return { loadTasks, isLoading, isError, tasks }
+	return { loadTasks, isLoading, isError, tasks, isEmpty }
 }

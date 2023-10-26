@@ -1,10 +1,65 @@
+@import '../../../assets/styles/vars.scss';
+// TODO: сделать одинаковую ширину
 .body {
-	.toggle {
+	display: flex;
+	flex-direction: row;
+	@include textH5;
+	padding: 0.8em 2em 0.8em 1em;
+	width: 95%;
+	border-radius: 150px 15px 15px 150px;
+	background-color: $colorBackground2;
+	@include grayShadow;
+
+	.toggleBlock {
+		display: flex;
+		align-items: center;
+		margin-right: 1em;
+		padding-right: 1em;
+		border-right: 2px solid $colorAccent3;
+
+		.toggle {
+			width: 2.2em;
+			height: 2.2em;
+			cursor: pointer;
+		}
+
+		.toggleActive {
+			color: $colorAccent2;
+		}
+
+		.toggleNotActive {
+			color: $colorPrimaryBlue;
+		}
 	}
 
-	.title {
+	.textBlock {
+		.time {
+			padding-top: 0.2em;
+			margin-bottom: 1em;
+		}
+
+		.title {
+			@include textH4;
+			margin-bottom: 0.3em;
+			cursor: pointer;
+		}
+
+		.description {
+			@include textH6;
+			cursor: pointer;
+			padding-bottom: 0.4em;
+		}
 	}
 
-	.description {
+	.green {
+		color: $colorGreenUI;
+	}
+
+	.red {
+		color: $colorRedUI;
+	}
+
+	.blue {
+		color: $colorPrimaryBlue;
 	}
 }

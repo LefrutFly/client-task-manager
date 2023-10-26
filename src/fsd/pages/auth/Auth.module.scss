@@ -8,8 +8,13 @@
 .buttonsBlock {
 	display: flex;
 	flex-direction: column;
+
 	.goToLoginOrRegister {
 		margin-top: 1em;
 		background-color: $colorBackground1;
+	}
+
+	.button {
+		width: 331px;
 	}
 }

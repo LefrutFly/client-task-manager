@@ -1,6 +1,11 @@
-import { get, ref, set } from 'firebase/database'
+import { get, ref, remove, set } from 'firebase/database'
 import { rtdb } from '../../config/firebase/firebase'
-import { ITaskCard, ITaskDB, TypeOfTask } from '../../types/task.interface'
+import {
+	ITaskByForm,
+	ITaskCard,
+	ITaskDB,
+	TypeOfTask,
+} from '../../types/task.interface'
 import { LocalStorageService } from '../localStorage/LocalStorageService.service'
 
 const tasksUrl = 'tasks/'
@@ -8,7 +13,8 @@ const tasksUrl = 'tasks/'
 export const TasksService = {
 	async getTasks(): Promise<ITaskDB[]> {
 		const key = LocalStorageService.loadUser().id
-		const rtdbRef = ref(rtdb, tasksUrl + key)
+		const link = tasksUrl + key
+		const rtdbRef = ref(rtdb, link)
 
 		let snapshot
 
@@ -21,6 +27,7 @@ export const TasksService = {
 				isCompleted: true,
 				type_of_task: TypeOfTask.RED,
 				date: 'ER.RO.R!!!',
+				timeTo: 'ER:RR',
 			},
 		]
 
@@ -42,7 +49,42 @@ export const TasksService = {
 			return errorTask
 		}
 	},
-	async getTaskById(id: number) {},
+	async getTaskById(taskId: number): Promise<ITaskDB> {
+		const key = LocalStorageService.loadUser().id
+		const link = tasksUrl + key + '/' + taskId
+		const rtdbRef = ref(rtdb, link)
+
+		let snapshot
+
+		const errorTask: ITaskDB = {
+			id: 0,
+			userId: '0',
+			title: 'Error!',
+			description: 'Error!Error!',
+			isCompleted: true,
+			type_of_task: TypeOfTask.RED,
+			date: 'ER.RO.R!!!',
+			timeTo: 'ER:RR',
+		}
+
+		try {
+			snapshot = await get(rtdbRef)
+		} catch (error) {
+			console.log(error)
+		}
+
+		if (snapshot) {
+			if (snapshot.exists()) {
+				const tasksData = snapshot.val()
+				const tasks: ITaskDB = { ...tasksData }
+				return tasks
+			} else {
+				return errorTask
+			}
+		} else {
+			return errorTask
+		}
+	},
 	async getLength(): Promise<number> {
 		let length = 0
 
@@ -81,8 +123,38 @@ export const TasksService = {
 					isCompleted: false,
 					type_of_task: TypeOfTask.BLUE,
 					date: dateFormatted,
+					timeTo: '00:00',
 				}
 				await this.updateTaskByID(taskId, newTask, key)
+			} else {
+				console.log('User not found!')
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	},
+	async createTaskByForm(newTask: ITaskByForm, id?: string) {
+		try {
+			let key
+			if (id) {
+				key = id
+			} else {
+				key = LocalStorageService.loadUser().id
+			}
+
+			if (key) {
+				const taskId: number = await this.getLength()
+				const createdTask: ITaskDB = {
+					id: taskId,
+					userId: key,
+					title: newTask.title,
+					description: newTask.description,
+					isCompleted: false,
+					type_of_task: newTask.type_of_task,
+					date: newTask.date,
+					timeTo: newTask.timeTo,
+				}
+				await this.updateTaskByID(taskId, createdTask, key)
 			} else {
 				console.log('User not found!')
 			}
@@ -99,13 +171,10 @@ export const TasksService = {
 				key = LocalStorageService.loadUser().id
 			}
 			await set(ref(rtdb, `${tasksUrl}${key}/${taskId}`), {
-				id: taskId,
 				userId: key,
 				...newTask,
 			})
-				.then(_ => {
-					console.log('success push!')
-				})
+				.then(_ => {})
 				.catch(error => {
 					const errorCode = error.code
 					const errorMessage = error.message
@@ -115,5 +184,30 @@ export const TasksService = {
 		} catch (error) {
 			console.log(error)
 		}
+	},
+	async updateCompletedTaskById(
+		taskId: number,
+		newCompleted: boolean,
+		id?: string
+	) {
+		try {
+			let key
+			if (id) {
+				key = id
+			} else {
+				key = LocalStorageService.loadUser().id
+			}
+			const newTask = await this.getTaskById(taskId)
+			newTask.isCompleted = newCompleted
+			this.updateTaskByID(taskId, newTask)
+		} catch (error) {
+			console.log(error)
+		}
+	},
+	async deleteTaskById(taskId: number) {
+		const key = LocalStorageService.loadUser().id
+		const link = tasksUrl + key + '/' + taskId
+		const rtdbRef = ref(rtdb, link)
+		remove(rtdbRef)
 	},
 }

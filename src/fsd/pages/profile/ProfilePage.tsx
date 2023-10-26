@@ -9,6 +9,7 @@ import { IProfile } from '../../../types/profile.interface'
 import { FormField } from '../../entities/form-field/FormField'
 import Button_1 from '../../shared/buttons/button_1/Button_1'
 import Table_1 from '../../shared/tables/table_1/Table_1'
+import style from './ProfilePage.module.scss'
 
 const ProfilePage = () => {
 	const {
@@ -56,10 +57,11 @@ const ProfilePage = () => {
 					placeholder='your new nick name'
 					error={errors.userName?.message}
 				/>
-				<Button_1 variant='green'>Submit</Button_1>
+				<Button_1 variant='green' className={style.button}>
+					submit
+				</Button_1>
 			</form>
-			<br />
-			<Button_1 variant='red' onClick={cancel}>
+			<Button_1 variant='red' className={style.button} onClick={cancel}>
 				cancel
 			</Button_1>
 		</Table_1>

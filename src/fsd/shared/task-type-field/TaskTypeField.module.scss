@@ -1,0 +1,44 @@
+@import '../../../assets/styles/vars.scss';
+
+.body {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	@include textH5;
+	margin-top: 0.2em;
+	width: 331px;
+	margin-inline: auto;
+
+	.title {
+		padding-top: 2px;
+		margin-left: 0.2em;
+	}
+
+	.select {
+		@include textH6;
+		width: 8em;
+		text-align: center;
+		margin-right: 0.2em;
+		border-radius: 15px;
+		padding: 0.2em 1em;
+		color: $colorWhiteUI;
+		border: 2px solid $colorAccent1;
+
+		appearance: none;
+
+		.option {
+		}
+	}
+}
+
+.blue {
+	background-color: $colorPrimaryBlue;
+}
+
+.red {
+	background-color: $colorRedUI;
+}
+
+.green {
+	background-color: $colorGreenUI;
+}

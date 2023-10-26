@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 import { LocalStorageService } from '../services/localStorage/LocalStorageService.service'
 
 export interface IUserState {
-	email: string | null
+	email: string
 	token: string | null
 	id: string | null
 }
 
 const initialState: IUserState = {
-	email: null,
+	email: '',
 	token: null,
 	id: null,
 }
@@ -25,7 +25,7 @@ const userSlice = createSlice({
 			LocalStorageService.saveUser(action.payload)
 		},
 		clearUser(state) {
-			state.email = null
+			state.email = ''
 			state.token = null
 			state.id = null
 

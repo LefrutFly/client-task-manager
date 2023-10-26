@@ -12,6 +12,10 @@ export interface ITaskDB {
 	isCompleted: boolean
 	type_of_task: TypeOfTask
 	date: string
+	timeTo: string
 }
 
-export interface ITaskCard extends Omit<ITaskDB, 'id' | 'userId'> {}
+export interface ITaskCard extends Omit<ITaskDB, 'userId'> {}
+
+export interface ITaskByForm
+	extends Omit<ITaskDB, 'id' | 'userId' | 'isCompleted'> {}

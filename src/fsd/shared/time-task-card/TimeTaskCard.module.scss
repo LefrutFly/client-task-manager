@@ -1,0 +1,9 @@
+@import '../../../assets/styles/vars.scss';
+
+.body {
+	color: $colorPrimaryBlue;
+
+	span {
+		color: $colorRedUI;
+	}
+}

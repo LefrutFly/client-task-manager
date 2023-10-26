@@ -10,8 +10,6 @@
 	color: $colorTextWhite;
 
 	&:hover {
-		transform: scale(1.02);
-		transition: 0.1s;
 		color: $colorWhiteUI;
 	}
 }
@@ -20,7 +18,11 @@
 	@include greenShadow;
 
 	&:hover {
-		@include greenShadowHover;
+		box-shadow: inset 3em 1em $colorPrimaryBlue;
+	}
+
+	&:active {
+		background-color: $colorPrimaryBlue;
 	}
 }
 .red {
@@ -28,6 +30,10 @@
 	@include redShadow;
 
 	&:hover {
-		@include redShadowHover;
+		box-shadow: inset 3em 1em $colorPrimaryBlue;
+	}
+
+	&:active {
+		background-color: $colorPrimaryBlue;
 	}
 }

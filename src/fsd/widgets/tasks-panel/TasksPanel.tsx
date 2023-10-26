@@ -9,14 +9,15 @@ import { useLoadingTasksLits } from './useLoadingTasksLits'
 const TasksPanel: FC = () => {
 	const { isAuth } = useAuth()
 
-	const { loadTasks, isLoading, isError, tasks } = useLoadingTasksLits()
+	const { loadTasks, isLoading, isError, tasks, isEmpty } =
+		useLoadingTasksLits()
 
 	const loadingComponent = <Loader />
 	const errorComponent = <ErrorBoard>Loading Error :(</ErrorBoard>
 	const logoutComponent = (
 		<PleaseLoginBoard>Login to see tasks</PleaseLoginBoard>
 	)
-	const showTasksList = <TaskList tasks={tasks} />
+	const showTasksList = <TaskList tasks={tasks} isEmpty={isEmpty} />
 
 	const [currentComponent, setCurrentComponent] =
 		useState<JSX.Element>(loadingComponent)
@@ -33,7 +34,7 @@ const TasksPanel: FC = () => {
 		} else {
 			setCurrentComponent(logoutComponent)
 		}
-	}, [isLoading, isAuth])
+	}, [isLoading, isAuth, isEmpty])
 
 	return currentComponent
 }

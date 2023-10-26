@@ -114,7 +114,9 @@ const Auth: FC<IAuthProps> = ({ type }) => {
 					/>
 				</div>
 				<div className={style.buttonsBlock}>
-					<Button_1 variant='green'>Submit</Button_1>
+					<Button_1 variant='green' className={style.button}>
+						Submit
+					</Button_1>
 					<button
 						type='button'
 						className={style.goToLoginOrRegister}

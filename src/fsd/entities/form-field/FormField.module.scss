@@ -4,10 +4,11 @@
 	@include textH5;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 
 	.label {
 		margin-inline: auto;
+
 		.title {
 			@include textH6;
 			display: block;
