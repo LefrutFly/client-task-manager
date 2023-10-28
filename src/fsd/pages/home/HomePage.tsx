@@ -7,6 +7,7 @@ const HomePage = () => {
 		<div className={style.body}>
 			<Header />
 			<TasksPanel />
+			<div>_</div>
 		</div>
 	)
 }

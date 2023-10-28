@@ -1,11 +1,6 @@
 import { get, ref, remove, set } from 'firebase/database'
 import { rtdb } from '../../config/firebase/firebase'
-import {
-	ITaskByForm,
-	ITaskCard,
-	ITaskDB,
-	TypeOfTask,
-} from '../../types/task.interface'
+import { ITaskByForm, ITaskDB, TypeOfTask } from '../../types/task.interface'
 import { LocalStorageService } from '../localStorage/LocalStorageService.service'
 
 const tasksUrl = 'tasks/'
@@ -91,7 +86,33 @@ export const TasksService = {
 		tasks.map(task => {
 			if (task.date === date) tasksForDate.push(task)
 		})
-		return tasksForDate
+		const filteredArray = tasksForDate.filter(
+			element => element !== null && element !== undefined
+		)
+		return filteredArray
+	},
+	async isTasksExist(): Promise<boolean> {
+		const key = LocalStorageService.loadUser().id
+		const link = tasksUrl + key
+		const rtdbRef = ref(rtdb, link)
+
+		let snapshot
+
+		try {
+			snapshot = await get(rtdbRef)
+		} catch (error) {
+			console.log(error)
+		}
+
+		if (snapshot) {
+			if (snapshot.exists()) {
+				return true
+			} else {
+				return false
+			}
+		} else {
+			return false
+		}
 	},
 	async getLength(): Promise<number> {
 		let length = 0
@@ -165,7 +186,7 @@ export const TasksService = {
 			console.log(error)
 		}
 	},
-	async updateTaskByID(taskId: number, newTask: ITaskCard, id?: string) {
+	async updateTaskByID(taskId: number, newTask: ITaskDB, id?: string) {
 		try {
 			let key
 			if (id) {
@@ -173,9 +194,10 @@ export const TasksService = {
 			} else {
 				key = LocalStorageService.loadUser().id
 			}
+			const updatedTask = { ...newTask }
+			updatedTask.userId = key + ''
 			await set(ref(rtdb, `${tasksUrl}${key}/${taskId}`), {
-				userId: key,
-				...newTask,
+				...updatedTask,
 			})
 				.then(_ => {})
 				.catch(error => {

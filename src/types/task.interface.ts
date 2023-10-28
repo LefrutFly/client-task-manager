@@ -15,7 +15,9 @@ export interface ITaskDB {
 	timeTo: string
 }
 
-export interface ITaskCard extends Omit<ITaskDB, 'userId'> {}
+export interface ITaskCard extends Omit<ITaskDB, 'userId'> {
+	sortTasks: () => Promise<void>
+}
 
 export interface ITaskByForm
 	extends Omit<ITaskDB, 'id' | 'userId' | 'isCompleted'> {}

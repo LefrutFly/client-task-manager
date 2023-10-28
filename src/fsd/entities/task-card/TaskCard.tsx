@@ -18,15 +18,17 @@ const TaskCard: FC<ITaskCard> = ({
 	isCompleted,
 	type_of_task,
 	timeTo,
+	sortTasks,
 }) => {
 	const [isActiveTask, setActiveTask] = useState<boolean>(isCompleted)
 
 	const newDescription =
 		description.length > 200 ? description.slice(0, 200) + '...' : description
 
-	const enableTask = (enable: boolean) => {
+	const enableTask = async (enable: boolean) => {
 		setActiveTask(enable)
-		TasksService.updateCompletedTaskById(id, enable)
+		await TasksService.updateCompletedTaskById(id, enable)
+		sortTasks()
 	}
 
 	return (
