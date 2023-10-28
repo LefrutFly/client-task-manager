@@ -85,6 +85,14 @@ export const TasksService = {
 			return errorTask
 		}
 	},
+	async getTasksByDate(date: string): Promise<ITaskDB[]> {
+		const tasks = await this.getTasks()
+		let tasksForDate: ITaskDB[] = []
+		tasks.map(task => {
+			if (task.date === date) tasksForDate.push(task)
+		})
+		return tasksForDate
+	},
 	async getLength(): Promise<number> {
 		let length = 0
 
@@ -105,13 +113,8 @@ export const TasksService = {
 			} else {
 				key = LocalStorageService.loadUser().id
 			}
-			let dateNow: Date = new Date()
-			const dateFormatted =
-				dateNow.getDate().toString().padStart(2, '0') +
-				'.' +
-				dateNow.getMonth().toString().padStart(2, '0') +
-				'.' +
-				dateNow.getFullYear()
+
+			const dateFormatted = new Date().toLocaleDateString('ru')
 
 			if (key) {
 				const taskId: number = await this.getLength()

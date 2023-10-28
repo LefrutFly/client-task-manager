@@ -54,7 +54,7 @@ const ProfilePage = () => {
 							message: 'Max length should less 12 symbols',
 						},
 					})}
-					placeholder='your new nick name'
+					placeholder='new nick name'
 					error={errors.userName?.message}
 				/>
 				<Button_1 variant='green' className={style.button}>

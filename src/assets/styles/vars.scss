@@ -15,27 +15,27 @@ $colorWhiteUI: #ffffff;
 
 @mixin textH1 {
 	font-weight: 700;
-	font-size: 62px;
+	font-size: calc(40px + (62 - 40) * (100vw / 1920));
 }
 @mixin textH2 {
 	font-weight: 600;
-	font-size: 54px;
+	font-size: calc(30px + (54 - 30) * (100vw / 1920));
 }
 @mixin textH3 {
 	font-weight: 500;
-	font-size: 40px;
+	font-size: calc(24px + (40 - 24) * (100vw / 1920));
 }
 @mixin textH4 {
 	font-weight: 500;
-	font-size: 30px;
+	font-size: calc(18px + (30 - 18) * (100vw / 1920));
 }
 @mixin textH5 {
 	font-weight: 400;
-	font-size: 24px;
+	font-size: calc(24px + (24 - 15) * (100vw / 1920));
 }
 @mixin textH6 {
 	font-weight: 300;
-	font-size: 18px;
+	font-size: calc(18px + (18 - 12) * (100vw / 1920));
 }
 @mixin grayShadow {
 	box-shadow: 0px 2px 10px rgba($color: $colorShadowGray, $alpha: 0.8);

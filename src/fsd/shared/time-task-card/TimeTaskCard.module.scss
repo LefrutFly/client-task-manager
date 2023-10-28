@@ -1,9 +1,13 @@
 @import '../../../assets/styles/vars.scss';
 
-.body {
+.active {
 	color: $colorPrimaryBlue;
 
 	span {
 		color: $colorRedUI;
 	}
+}
+
+.inactive {
+	color: $colorTextGray;
 }

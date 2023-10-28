@@ -23,7 +23,7 @@ const CreateNewTaskPage = () => {
 	const navigate = useNavigate()
 
 	const timeRegex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-	const dateRegex = /^(0[1-9]|[12][0-9]|3[01]):(0[1-9]|1[0-2]):\d{4}$/
+	const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/
 
 	const onSubmit = async (data: ITaskByForm) => {
 		await TasksService.createTaskByForm(data)
@@ -75,7 +75,7 @@ const CreateNewTaskPage = () => {
 							message: 'Invalid time format (hh:mm)',
 						},
 					})}
-					type='text'
+					type='time'
 					placeholder='hh:mm'
 					error={errors.timeTo?.message}
 				/>
@@ -96,7 +96,7 @@ const CreateNewTaskPage = () => {
 						},
 					})}
 					type='text'
-					placeholder='dd:mm:yyyy'
+					placeholder='dd.mm.yyyy'
 					error={errors.date?.message}
 				/>
 				<br />

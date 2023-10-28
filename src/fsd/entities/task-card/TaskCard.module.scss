@@ -1,5 +1,5 @@
 @import '../../../assets/styles/vars.scss';
-// TODO: сделать одинаковую ширину
+
 .body {
 	display: flex;
 	flex-direction: row;
@@ -24,7 +24,7 @@
 		}
 
 		.toggleActive {
-			color: $colorAccent2;
+			color: $colorTextGray;
 		}
 
 		.toggleNotActive {
@@ -34,6 +34,9 @@
 
 	.textBlock {
 		.time {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
 			padding-top: 0.2em;
 			margin-bottom: 1em;
 		}
@@ -48,6 +51,9 @@
 			@include textH6;
 			cursor: pointer;
 			padding-bottom: 0.4em;
+
+			max-width: min(40vw, 500px);
+			word-wrap: break-word;
 		}
 	}
 
@@ -62,4 +68,9 @@
 	.blue {
 		color: $colorPrimaryBlue;
 	}
+}
+
+.completed {
+	background-color: $colorAccent1;
+	color: $colorTextGray;
 }

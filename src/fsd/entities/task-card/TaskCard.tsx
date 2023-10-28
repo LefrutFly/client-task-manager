@@ -30,7 +30,7 @@ const TaskCard: FC<ITaskCard> = ({
 	}
 
 	return (
-		<div className={style.body}>
+		<div className={`${style.body}  ${isActiveTask && style.completed}`}>
 			<div className={style.toggleBlock}>
 				{isActiveTask ? (
 					<MdRadioButtonChecked
@@ -45,10 +45,19 @@ const TaskCard: FC<ITaskCard> = ({
 				)}
 			</div>
 			<div className={style.textBlock}>
-				<div className={style.time}>
-					<TimeTaskCard time={timeTo} />
+				<div className={`${style.time}`}>
+					<TimeTaskCard
+						time={timeTo}
+						variant={isActiveTask ? 'inactive' : 'active'}
+					/>
 				</div>
-				<p className={`${style.title} ${TypeToStyle[type_of_task]}`}>{title}</p>
+				<p
+					className={`${style.title} ${
+						isActiveTask ? style.completed : TypeToStyle[type_of_task]
+					}`}
+				>
+					{title}
+				</p>
 				<p className={style.description}>{newDescription}</p>
 			</div>
 		</div>
