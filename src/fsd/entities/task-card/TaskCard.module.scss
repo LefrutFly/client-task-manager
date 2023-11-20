@@ -33,6 +33,8 @@
 	}
 
 	.textBlock {
+		cursor: pointer;
+
 		.time {
 			display: flex;
 			flex-direction: row;
@@ -44,12 +46,10 @@
 		.title {
 			@include textH4;
 			margin-bottom: 0.3em;
-			cursor: pointer;
 		}
 
 		.description {
 			@include textH6;
-			cursor: pointer;
 			padding-bottom: 0.4em;
 
 			max-width: min(40vw, 500px);

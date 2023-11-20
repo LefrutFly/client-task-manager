@@ -1,5 +1,7 @@
 import { FC, useState } from 'react'
 import { MdRadioButtonChecked, MdRadioButtonUnchecked } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
+import { pathToTaskCard } from '../../../config/const-config'
 import { TasksService } from '../../../services/tasks/Task.service'
 import { ITaskCard, TypeOfTask } from '../../../types/task.interface'
 import TimeTaskCard from '../../shared/time-task-card/TimeTaskCard'
@@ -20,6 +22,8 @@ const TaskCard: FC<ITaskCard> = ({
 	timeTo,
 	sortTasks,
 }) => {
+	const navigate = useNavigate()
+
 	const [isActiveTask, setActiveTask] = useState<boolean>(isCompleted)
 
 	const newDescription =
@@ -30,6 +34,8 @@ const TaskCard: FC<ITaskCard> = ({
 		await TasksService.updateCompletedTaskById(id, enable)
 		sortTasks()
 	}
+
+	const openTask = () => navigate(`${pathToTaskCard}/${id}`)
 
 	return (
 		<div className={`${style.body}  ${isActiveTask && style.completed}`}>
@@ -46,7 +52,7 @@ const TaskCard: FC<ITaskCard> = ({
 					/>
 				)}
 			</div>
-			<div className={style.textBlock}>
+			<div className={style.textBlock} onClick={openTask}>
 				<div className={`${style.time}`}>
 					<TimeTaskCard
 						time={timeTo}

@@ -6,3 +6,4 @@ export const pathToLogin: string = '/login'
 export const pathToRegister: string = '/register'
 export const pathToTask: string = '/tasks'
 export const pathToCreateNewTask: string = `${pathToTask}/create-new`
+export const pathToTaskCard = `${pathToTask}/task/`

@@ -23,9 +23,14 @@ const CreateNewTaskPage = () => {
 	const navigate = useNavigate()
 
 	const timeRegex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-	const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/
 
 	const onSubmit = async (data: ITaskByForm) => {
+		const dateParts = data.date.split('-')
+		const year = dateParts[0]
+		const month = dateParts[1]
+		const day = dateParts[2].split('.')[0]
+		data.date = `${day}.${month}.${year}`
+
 		await TasksService.createTaskByForm(data)
 		navigate(pathToHome)
 	}
@@ -90,12 +95,8 @@ const CreateNewTaskPage = () => {
 							value: 10,
 							message: 'Max length should more 10 symbols',
 						},
-						pattern: {
-							value: dateRegex,
-							message: 'Invalid time format (dd:mm:yyyy)',
-						},
 					})}
-					type='text'
+					type='date'
 					placeholder='dd.mm.yyyy'
 					error={errors.date?.message}
 				/>
