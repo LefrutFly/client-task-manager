@@ -14,7 +14,8 @@ VITE_FIREBASE_APP_ID=""
 VITE_FIREBASE_RTDB=""
 ```
 
-To run the dev version on local locale:
+To run the developer version:
 ```
+yarn
 yarn dev
 ```
