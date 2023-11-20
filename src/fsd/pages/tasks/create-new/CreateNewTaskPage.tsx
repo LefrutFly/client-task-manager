@@ -7,7 +7,6 @@ import { FormField } from '../../../entities/form-field/FormField'
 import Button_1 from '../../../shared/buttons/button_1/Button_1'
 import Table_1 from '../../../shared/tables/table_1/Table_1'
 import TaskTypeField from '../../../shared/task-type-field/TaskTypeField'
-import style from './CreateNewTaskPage.module.scss'
 
 const CreateNewTaskPage = () => {
 	const {
@@ -101,11 +100,9 @@ const CreateNewTaskPage = () => {
 					error={errors.date?.message}
 				/>
 				<br />
-				<Button_1 variant='green' className={style.button}>
-					create new
-				</Button_1>
+				<Button_1 variant='green'>create new</Button_1>
 			</form>
-			<Button_1 variant='red' className={style.button} onClick={cancel}>
+			<Button_1 variant='red' onClick={cancel}>
 				cancel
 			</Button_1>
 		</Table_1>
